@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{4A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{FE97A268-DABE-4184-ACD4-505D343A58B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShooping.Web", "FrontEd\GeekShooping.Web\GeekShooping.Web.csproj", "{FE654DB0-8EEB-4F84-ACA0-D011D994E77F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShooping.ProductAPI", "Services\GeekShooping.ProductAPI\GeekShooping.ProductAPI.csproj", "{B7155F61-1753-46A0-B974-8A64C9AF283F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShooping.ProductAPI", "Services\GeekShooping.ProductAPI\GeekShooping.ProductAPI.csproj", "{B7155F61-1753-46A0-B974-8A64C9AF283F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.Web", "GeekShopping.Web\GeekShopping.Web.csproj", "{D02CE40E-96AF-4771-810A-E3B24B51E4EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,21 +17,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE654DB0-8EEB-4F84-ACA0-D011D994E77F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE654DB0-8EEB-4F84-ACA0-D011D994E77F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE654DB0-8EEB-4F84-ACA0-D011D994E77F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE654DB0-8EEB-4F84-ACA0-D011D994E77F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B7155F61-1753-46A0-B974-8A64C9AF283F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B7155F61-1753-46A0-B974-8A64C9AF283F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7155F61-1753-46A0-B974-8A64C9AF283F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7155F61-1753-46A0-B974-8A64C9AF283F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D02CE40E-96AF-4771-810A-E3B24B51E4EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D02CE40E-96AF-4771-810A-E3B24B51E4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D02CE40E-96AF-4771-810A-E3B24B51E4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D02CE40E-96AF-4771-810A-E3B24B51E4EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{FE654DB0-8EEB-4F84-ACA0-D011D994E77F} = {4A18DFC4-7578-4320-9228-E1B124A1AEF6}
 		{B7155F61-1753-46A0-B974-8A64C9AF283F} = {FE97A268-DABE-4184-ACD4-505D343A58B2}
+		{D02CE40E-96AF-4771-810A-E3B24B51E4EB} = {4A18DFC4-7578-4320-9228-E1B124A1AEF6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E38B4414-E950-4335-994C-77875DC6D986}

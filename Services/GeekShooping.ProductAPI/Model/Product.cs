@@ -16,5 +16,19 @@ namespace GeekShooping.ProductAPI.Model
         [Required]
         [Range(1, 10000)]
         public decimal Price { get; set; }
+
+        [Column("description")]
+        [StringLength(500)]
+        public string Description { get; set; }
+
+        [Column("category_name")]
+        [StringLength(50)]
+        public string CategoryName { get; set; }
+
+        [Column("image_url")]
+        [StringLength(150)]
+        public string ImageUrl { get; set; }
+
+
     }
 }
