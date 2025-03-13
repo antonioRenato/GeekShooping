@@ -17,23 +17,23 @@ namespace GeekShooping.ProductAPI.Repository
             _mapper = mapper;
         }
 
-        public async Task<ProductVO?> Create(ProductVO vo)
+        public async Task<ProductVO> Create(ProductVO vo)
         {
             Product product = _mapper.Map<Product>(vo);
             _context.Products.Add(product);
             
             await _context.SaveChangesAsync();
 
-            return product != null ? _mapper.Map<ProductVO>(product) : null;
+            return _mapper.Map<ProductVO>(product);
         }
 
         public async Task<bool> DeleteById(long id)
         {
             try
             {
-                Product? product = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync();
+                Product product = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync() ?? new Product();
 
-                if (product == null)
+                if (product.Id <= 0)
                 {
                     return false;
                 }
@@ -56,21 +56,21 @@ namespace GeekShooping.ProductAPI.Repository
             return _mapper.Map<List<ProductVO>>(products);
         }
 
-        public async Task<ProductVO?> FindById(long id)
+        public async Task<ProductVO> FindById(long id)
         {
-            Product? product = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync();
+            Product? product = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync() ?? new Product();
 
-            return product != null ? _mapper.Map<ProductVO>(product) : null;
+            return _mapper.Map<ProductVO>(product);
         }
 
-        public async Task<ProductVO?> Update(ProductVO vo)
+        public async Task<ProductVO> Update(ProductVO vo)
         {
             Product product = _mapper.Map<Product>(vo);
             _context.Products.Update(product);
 
             await _context.SaveChangesAsync();
 
-            return product != null ? _mapper.Map<ProductVO>(product) : null;
+            return _mapper.Map<ProductVO>(product);
         }
     }
 }
