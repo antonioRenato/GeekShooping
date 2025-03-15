@@ -1,33 +1,64 @@
 ﻿using GeekShopping.Web.Models;
 using GeekShopping.Web.Services.IServices;
+using GeekShopping.Web.Utils;
 
 namespace GeekShopping.Web.Services
 {
     public class ProducService : IProductService
     {
-        public Task<ProductModel> CreateProduct(ProductModel model)
+        private readonly HttpClient _httpClient;
+        public const string apiKey = "api/v1/product";
+
+        public ProducService(HttpClient httpClient)
         {
-            throw new NotImplementedException();
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public Task<bool> DeleteProduct(long id)
+        public async Task<ProductModel> CreateProduct(ProductModel model)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.PostAsJson(apiKey,model);
+            
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.ReadContentAs<ProductModel>();
+            }
+
+            throw new Exception("Something went wrong when tryed to call API");
         }
 
-        public Task<IEnumerable<ProductModel>> FindAllProduct()
+        public async Task<bool> DeleteProduct(long id)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.DeleteAsync(apiKey);
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.ReadContentAs<bool>();
+            }
+
+            throw new Exception("Something went wrong when tryed to call API");
         }
 
-        public Task<ProductModel> FindProductById(long id)
+        public async Task<IEnumerable<ProductModel>> FindAllProduct()
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.GetAsync(apiKey);
+            return await response.ReadContentAs<List<ProductModel>>();
         }
 
-        public Task<ProductModel> UpdateProduct(ProductModel model)
+        public async Task<ProductModel> FindProductById(long id)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.GetAsync($"{apiKey}/{id}");
+            return await response.ReadContentAs<ProductModel>();
+        }
+
+        public async Task<ProductModel> UpdateProduct(ProductModel model)
+        {
+            var response = await _httpClient.PutAsJson(apiKey, model);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.ReadContentAs<ProductModel>();
+            }
+
+            throw new Exception("Something went wrong when tryed to call API");
         }
     }
 }
