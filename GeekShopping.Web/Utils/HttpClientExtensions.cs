@@ -15,6 +15,16 @@ namespace GeekShopping.Web.Utils
                          $"{response.ReasonPhrase}");
             var dataAsString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
+            if (string.IsNullOrEmpty(dataAsString))
+            {
+                // For boolean returns, empty with success status typically means "true"
+                if (typeof(T) == typeof(bool))
+                    return (T)(object)true;
+
+                // For other types, return default value
+                return default(T);
+            }
+
             return JsonSerializer.Deserialize<T>(dataAsString,
                 new JsonSerializerOptions
                 { PropertyNameCaseInsensitive = true });

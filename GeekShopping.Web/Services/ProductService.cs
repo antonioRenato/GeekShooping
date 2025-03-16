@@ -4,12 +4,12 @@ using GeekShopping.Web.Utils;
 
 namespace GeekShopping.Web.Services
 {
-    public class ProducService : IProductService
+    public class ProductService : IProductService
     {
         private readonly HttpClient _httpClient;
         public const string apiKey = "api/v1/product";
 
-        public ProducService(HttpClient httpClient)
+        public ProductService(HttpClient httpClient)
         {
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
@@ -28,7 +28,7 @@ namespace GeekShopping.Web.Services
 
         public async Task<bool> DeleteProduct(long id)
         {
-            var response = await _httpClient.DeleteAsync(apiKey);
+            var response = await _httpClient.DeleteAsync($"{apiKey}/{id}");
             if (response.IsSuccessStatusCode)
             {
                 return await response.ReadContentAs<bool>();
